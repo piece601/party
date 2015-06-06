@@ -39,12 +39,13 @@
 		<div class="col-xs-12 col-sm-6">
 			<h3>介紹圖片</h3>	
 			<img src="<?=base_url($picture->path)?>" alt="" class="img-responsive">
+			<div class="clearfix" style="margin:10px 0"></div>
 			<a href="<?=base_url('welcome/edit_picture')?>" class="btn btn-warning">編輯</a>
 		</div>
 		<div class="col-xs-12 col-sm-6">
 			<h3>介紹文字</h3>
 			<div class="well"><?=$text->content?></div>
-			<a href="<?=base_url('welcome/edit_text')?>" class="btn btn-warning">編輯</a>
+			<a href="<?=base_url('welcome/edit_text')?>" class="btn btn-warning" style="margin: 10px 0">編輯</a>
 		</div>
 	</div>
 

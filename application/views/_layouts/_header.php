@@ -29,18 +29,29 @@
 </head>
 <body>
 <header class="container text-center">
-  <h1 class="well">Logo in here.</h1>
+  <h1 class="well"><a href="<?=base_url()?>">Logo in here.</a></h1>
 </header>
 <nav class="menu" id="theMenu">
   <div class="menu-wrap">
     <h1 class="logo"><a href="#">後台管理模組</a></h1>
     <i class="icon-remove menu-close">X</i>
     <a href="<?= base_url('welcome/admin')?>" class="smoothScroll">首頁管理</a>
-    <a href="<?= base_url('carousel/')?>" class="smoothScroll">滾輪廣告管理</a>
-    <a href="<?= base_url('welcome/link')?>" class="smoothScroll">首頁連結管理</a>
-    <a href="<?= base_url('media')?>" class="smoothScroll">首頁媒體管理</a>
-    <a href="<?= base_url('welcome/descript')?>" class="smoothScroll">首頁介紹管理</a>
-    <a href="<?= base_url('news')?>" class="smoothScroll">新聞管理</a>
+    <a href="<?= base_url('company/')?>" class="smoothScroll">固定項目(1)</a>
+    <a href="<?= base_url('qanda/')?>" class="smoothScroll">固定項目(2)</a>
+    <a href="<?= base_url('contact/')?>" class="smoothScroll">固定項目(3)</a>
   </div>
   <div id="menuToggle"><span class="glyphicon glyphicon-th"></span></div>
 </nav>
+<?php if (isset($navlists)): ?>
+  <nav class="container">
+    <ol class="breadcrumb">
+    <?php foreach ($navlists as $key => $value): ?>
+      <?php if (end($navlists) == $value): //active ?>
+        <li class="active"><?=$value;?></li>
+      <?php else: ?>
+        <li><a href="<?=base_url($key)?>"><?=$value?></a></li>
+      <?php endif ?>
+    <?php endforeach ?>
+    </ol>
+  </nav>
+<?php endif ?>

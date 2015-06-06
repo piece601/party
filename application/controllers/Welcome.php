@@ -8,11 +8,26 @@ class Welcome extends MY_Controller {
 		$this->load->model(['welcomepicture_model', 'welcometext_model', 'welcomeslide_model']);
 	}
 
+	public function immupload(){
+		$this->load->model('upload_model');
+		if ( $path = $this->singleUploading()['path'] ) {
+			$this->upload_model->insert_data([
+				'path' => base_url().$path
+			]);
+			echo base_url().$path;
+			return true;
+		}
+		// echo base_url().$this->singleUploading()['path']; //上傳成功
+		return false;
+	}
+
 	public function index()
 	{
+		$slides = $this->welcomeslide_model->select_all_data('asc');
 		$picture = $this->welcomepicture_model->select_data(1);
 		$text = $this->welcometext_model->select_data(1);
 		$this->load->view('welcome/index', [
+			'slides' => $slides,
 			'picture' => $picture,
 			'text' => $text
 		]);
@@ -24,10 +39,15 @@ class Welcome extends MY_Controller {
 		$slides = $this->welcomeslide_model->select_all_data('asc');
 		$picture = $this->welcomepicture_model->select_data(1);
 		$text = $this->welcometext_model->select_data(1);
+		$navlists =	[
+			'' => '首頁',
+			'welcome/admin' => '首頁管理'
+		];
 		$this->load->view('welcome/admin', [
 			'slides' => $slides,
 			'picture' => $picture,
-			'text' => $text
+			'text' => $text,
+			'navlists' => $navlists
 		]);
 		return true;
 	}	
@@ -67,7 +87,7 @@ class Welcome extends MY_Controller {
 		// 撈出圖片
 		$query = $this->welcomepicture_model->select_data(1);
 		if ( empty($_FILES['userfile']['size']) ) { // 無檔案上傳
-			$this->load->view('welcome/edit_picture');
+			$this->load->view('welcome/edit_picture', compact('query'));
 			return true;
 		}
 		@unlink($query->path); // 刪除原有檔案
@@ -86,16 +106,15 @@ class Welcome extends MY_Controller {
 		// 撈出介紹
 		$query = $this->welcometext_model->select_data(1);
 		if ( ! $data = $this->input->post() ) {
-			$this->load->view('welcome/edit_text', [
-				'query' => $query
-			]);
+			$this->load->view('welcome/edit_text', compact('query'));
 			return true;
 		}
 		$data['id'] = 1;
 		$this->welcometext_model->update_data($data);
 		$this->load->view('success', [
 			'message' => '更新成功',
-			'redirectUrl' => 'welcome/admin'
+			'redirectUrl' => 'welcome/admin',
+			
 		]);
 		return true;
 	}

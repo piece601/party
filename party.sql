@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost
--- 產生時間： 2015 年 06 月 06 日 13:28
+-- 產生時間： 2015 年 06 月 09 日 17:25
 -- 伺服器版本: 5.6.20
 -- PHP 版本： 5.5.15
 
@@ -30,6 +30,24 @@ CREATE TABLE IF NOT EXISTS `abouts` (
 `id` int(11) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `background`
+--
+
+CREATE TABLE IF NOT EXISTS `background` (
+`id` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `background`
+--
+
+INSERT INTO `background` (`id`, `path`) VALUES
+(1, '');
 
 -- --------------------------------------------------------
 
@@ -68,6 +86,42 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 
 INSERT INTO `contacts` (`id`, `title`, `content`) VALUES
 (1, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `footer`
+--
+
+CREATE TABLE IF NOT EXISTS `footer` (
+`id` int(11) NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `footer`
+--
+
+INSERT INTO `footer` (`id`, `content`) VALUES
+(1, '');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `logo`
+--
+
+CREATE TABLE IF NOT EXISTS `logo` (
+`id` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `logo`
+--
+
+INSERT INTO `logo` (`id`, `path`) VALUES
+(1, 'uploads/294f12f75dcb79dc7dc7ae725ca82680.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,12 +208,12 @@ CREATE TABLE IF NOT EXISTS `welcome_slide` (
 --
 
 INSERT INTO `welcome_slide` (`id`, `title`, `path`, `url`) VALUES
-(1, '公司簡介', 'uploads/794dfccd070d905a2b49f301683917d7.jpg', ''),
-(2, '兒童慶生Party', 'uploads/0acf76e9d152165f9b92e12fe46aae4e.jpg', ''),
-(3, '婚禮佈置', 'uploads/7d1ee238337ce405bfdaa14ac7ae8c5a.jpg', ''),
-(4, '私人/企業', 'uploads/a38b8a483243bec9f3b371d339128cfd.jpg', ''),
-(5, 'Q / A', 'uploads/d907ce6cb7cc62c27be6ea476ea4fc0b.jpg', ''),
-(6, '聯絡我們', 'uploads/1f4e73e8a1c2e5b97db6b9164d221955.jpg', '');
+(1, '公司簡介', 'uploads/c6a85e6c46d90d1113c2ed94c37281b3.jpg', ''),
+(2, '兒童慶生Party', 'uploads/1eb41ff6ff7b5b84e3903763791fd753.jpg', ''),
+(3, '婚禮佈置', 'uploads/61b891fd56787ce8bfb9d7105ed1aabf.jpg', ''),
+(4, '私人/企業', 'uploads/d3b00d7e2da32b14bef5a4efbdb7a6ac.jpg', ''),
+(5, 'Q / A', 'uploads/bf28bb288f55888ce68bf88b6389fe7b.jpg', ''),
+(6, '聯絡我們', 'uploads/02a9154e20f982494d46c3a4334ce45a.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -190,6 +244,12 @@ ALTER TABLE `abouts`
  ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `background`
+--
+ALTER TABLE `background`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `companys`
 --
 ALTER TABLE `companys`
@@ -199,6 +259,18 @@ ALTER TABLE `companys`
 -- 資料表索引 `contacts`
 --
 ALTER TABLE `contacts`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `footer`
+--
+ALTER TABLE `footer`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `logo`
+--
+ALTER TABLE `logo`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -241,6 +313,11 @@ ALTER TABLE `welcome_text`
 ALTER TABLE `abouts`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- 使用資料表 AUTO_INCREMENT `background`
+--
+ALTER TABLE `background`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- 使用資料表 AUTO_INCREMENT `companys`
 --
 ALTER TABLE `companys`
@@ -249,6 +326,16 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- 使用資料表 AUTO_INCREMENT `contacts`
 --
 ALTER TABLE `contacts`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- 使用資料表 AUTO_INCREMENT `footer`
+--
+ALTER TABLE `footer`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- 使用資料表 AUTO_INCREMENT `logo`
+--
+ALTER TABLE `logo`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- 使用資料表 AUTO_INCREMENT `qandas`

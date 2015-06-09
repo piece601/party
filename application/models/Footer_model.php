@@ -1,7 +1,7 @@
 <?php
 
-class Qanda_model extends MY_Model {
-	protected $table = 'qandas';
+class Footer_model extends MY_Model {
+	protected $table = 'footer';
 	protected $primaryKey = 'id';
 
 	public function __construct()

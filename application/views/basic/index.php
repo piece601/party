@@ -12,11 +12,12 @@
 		<div class="panel-body text-center">
 			<img src="<?= base_url($background->path)?>" alt="" class="img-responsive">
 			<a href="<?=base_url('basic/edit_background')?>" class="btn btn-warning">編輯</a>
+			<a href="<?=base_url('basic/delete_background')?>" class="btn btn-danger">刪除背景</a>
 		</div>
 	</div>
 	<div class="panel panel-primary">
 		<div class="panel panel-heading"><h3>站底資訊</h3></div>
-		<div class="panel body">
+		<div class="panel body text-center">
 			<div><?=$footer->content?></div>
 			<a href="<?=base_url('basic/edit_footer')?>" class="btn btn-warning">編輯</a>
 		</div>

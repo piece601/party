@@ -72,33 +72,39 @@
 				</a>
 			</li>
 			<li>
-				<a href="">
+				<a href="<?= base_url('page/index/2')?>">
 					<!-- <p class="slide-text-2"><?=$slides[1]->title?></p> -->
 					<img src="<?=base_url($slides[1]->path)?>" alt="">
 				</a>			
 			</li>
 			<li>
-				<a href="">
+				<a href="<?= base_url('page/index/3')?>">
 					<!-- <p class="slide-text-3"><?=$slides[2]->title?></p> -->
 					<img src="<?=base_url($slides[2]->path)?>" alt="">
 				</a>
 			</li>
 			<li>
-				<a href="">
+				<a href="<?= base_url('page/index/3')?>">
 					<!-- <p class="slide-text-4"><?=$slides[3]->title?></p> -->
 					<img src="<?=base_url($slides[3]->path)?>" alt="">
 				</a>
 			</li>
 			<li>
-				<a href="<?=base_url('qanda')?>">
+				<a href="<?= base_url('page/index/4')?>">
 					<!-- <p class="slide-text-5"><?=$slides[4]->title?></p> -->
 					<img src="<?=base_url($slides[4]->path)?>" alt="">
 				</a>
 			</li>
 			<li>
-				<a href="<?=base_url('contact')?>">
+				<a href="<?=base_url('qanda')?>">
 					<!-- <p class="slide-text-6"><?=$slides[5]->title?></p> -->
 					<img src="<?=base_url($slides[5]->path)?>" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="<?=base_url('contact')?>">
+					<!-- <p class="slide-text-6"><?=$slides[5]->title?></p> -->
+					<img src="<?=base_url($slides[6]->path)?>" alt="">
 				</a>
 			</li>
 		</ul>

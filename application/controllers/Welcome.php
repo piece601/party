@@ -54,6 +54,7 @@ class Welcome extends MY_Controller {
 
 	public function edit_slide($id = null)
 	{
+
 		if ( ! $query = $this->welcomeslide_model->select_data($id) ) {
 			$this->load->view('failure', [
 				'message' => '查無此資料'
@@ -61,9 +62,16 @@ class Welcome extends MY_Controller {
 			return true;
 		}
 
+		$navlists =	[
+			'' => '首頁',
+			'welcome/admin' => '首頁管理',
+			'/' => '編輯 - '.$query->title
+		];
+
 		if ( ! $data['title'] = $this->input->post('title', true)) {
 			$this->load->view('welcome/edit_slide', [
-				'query' => $query
+				'query' => $query,
+				'navlists' => $navlists
 			]);
 			return true;
 		}

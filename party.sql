@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost
--- 產生時間： 2015 年 06 月 09 日 17:25
+-- 產生時間： 2015 年 06 月 10 日 18:59
 -- 伺服器版本: 5.6.20
 -- PHP 版本： 5.5.15
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `title`, `content`) VALUES
-(1, '', '');
+(1, '聯絡我們', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>WoW</p>\r\n</body>\r\n</html>');
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `footer` (
 --
 
 INSERT INTO `footer` (`id`, `content`) VALUES
-(1, '');
+(1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Amamain</p>\r\n<p>asd</p>\r\n</body>\r\n</html>');
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,26 @@ CREATE TABLE IF NOT EXISTS `logo` (
 --
 
 INSERT INTO `logo` (`id`, `path`) VALUES
-(1, 'uploads/294f12f75dcb79dc7dc7ae725ca82680.jpg');
+(1, 'uploads/03b6a47f949f450e3438f5754249a007.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `page_image`
+--
+
+CREATE TABLE IF NOT EXISTS `page_image` (
+`img_id` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `sub_id` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `page_image`
+--
+
+INSERT INTO `page_image` (`img_id`, `path`, `sub_id`) VALUES
+(1, 'uploads/87efcd9696f8526639a90aefc356c918.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -140,7 +159,28 @@ CREATE TABLE IF NOT EXISTS `qandas` (
 --
 
 INSERT INTO `qandas` (`id`, `content`, `title`) VALUES
-(1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>test</p>\r\n<p>&nbsp;</p>\r\n</body>\r\n</html>', 'test');
+(1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>test</p>\r\n<p>&nbsp;</p>\r\n</body>\r\n</html>', '問與答');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `sub_page`
+--
+
+CREATE TABLE IF NOT EXISTS `sub_page` (
+`sub_id` int(11) NOT NULL,
+  `page_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- 資料表的匯出資料 `sub_page`
+--
+
+INSERT INTO `sub_page` (`sub_id`, `page_id`, `title`, `path`) VALUES
+(3, 2, 'testadasd', 'uploads/072dc464a5d91014fe9f0b318193e51b.jpg'),
+(6, 3, '', 'uploads/0a2e862fcdb4d26598868548aa77d593.jpg');
 
 -- --------------------------------------------------------
 
@@ -201,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `welcome_slide` (
   `title` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL,
   `url` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 資料表的匯出資料 `welcome_slide`
@@ -209,11 +249,12 @@ CREATE TABLE IF NOT EXISTS `welcome_slide` (
 
 INSERT INTO `welcome_slide` (`id`, `title`, `path`, `url`) VALUES
 (1, '公司簡介', 'uploads/c6a85e6c46d90d1113c2ed94c37281b3.jpg', ''),
-(2, '兒童慶生Party', 'uploads/1eb41ff6ff7b5b84e3903763791fd753.jpg', ''),
+(2, '派對懶人包', 'uploads/5c5654267dbebd1bdc9b0e65e83dc8a3.jpg', ''),
 (3, '婚禮佈置', 'uploads/61b891fd56787ce8bfb9d7105ed1aabf.jpg', ''),
-(4, '私人/企業', 'uploads/d3b00d7e2da32b14bef5a4efbdb7a6ac.jpg', ''),
-(5, 'Q / A', 'uploads/bf28bb288f55888ce68bf88b6389fe7b.jpg', ''),
-(6, '聯絡我們', 'uploads/02a9154e20f982494d46c3a4334ce45a.jpg', '');
+(4, '精緻美食', 'uploads/d3b00d7e2da32b14bef5a4efbdb7a6ac.jpg', ''),
+(5, '各式活動規劃', 'uploads/3e6d268b50e2b90e724c8e3289ead5fe.jpg', ''),
+(6, 'Q & A', 'uploads/a33fbce67fbe761dfb847882b9f91067.jpg', ''),
+(7, '聯絡我們', 'uploads/46a1b3947d561d0a9a6893d1e49bf380.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -274,10 +315,22 @@ ALTER TABLE `logo`
  ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `page_image`
+--
+ALTER TABLE `page_image`
+ ADD PRIMARY KEY (`img_id`);
+
+--
 -- 資料表索引 `qandas`
 --
 ALTER TABLE `qandas`
  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `sub_page`
+--
+ALTER TABLE `sub_page`
+ ADD PRIMARY KEY (`sub_id`);
 
 --
 -- 資料表索引 `uploads`
@@ -338,10 +391,20 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 ALTER TABLE `logo`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- 使用資料表 AUTO_INCREMENT `page_image`
+--
+ALTER TABLE `page_image`
+MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- 使用資料表 AUTO_INCREMENT `qandas`
 --
 ALTER TABLE `qandas`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- 使用資料表 AUTO_INCREMENT `sub_page`
+--
+ALTER TABLE `sub_page`
+MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- 使用資料表 AUTO_INCREMENT `uploads`
 --
@@ -356,7 +419,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- 使用資料表 AUTO_INCREMENT `welcome_slide`
 --
 ALTER TABLE `welcome_slide`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- 使用資料表 AUTO_INCREMENT `welcome_text`
 --

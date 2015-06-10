@@ -26,11 +26,17 @@
       });
   });
   </script>
+  <style>
+  body {
+    background-image: url(<?=$_background?>);
+  }
+  </style>
 </head>
 <body>
-<header class="container text-center">
-  <h1 class="well"><a href="<?=base_url()?>">Logo in here.</a></h1>
+<header class="container">
+  <a href="<?=base_url()?>"><img src="<?=base_url($_logo)?>" alt="" class="img-responsive" style="margin:0 auto;"></a>
 </header>
+<div class="clearfix"></div><br>
 <nav class="menu" id="theMenu">
   <div class="menu-wrap">
     <h1 class="logo"><a href="#">後台管理模組</a></h1>
@@ -39,6 +45,7 @@
     <a href="<?= base_url('company/')?>" class="smoothScroll">固定項目(1)</a>
     <a href="<?= base_url('qanda/')?>" class="smoothScroll">固定項目(2)</a>
     <a href="<?= base_url('contact/')?>" class="smoothScroll">固定項目(3)</a>
+    <a href="<?= base_url('basic/')?>" class="smoothScroll">基礎設定</a>
   </div>
   <div id="menuToggle"><span class="glyphicon glyphicon-th"></span></div>
 </nav>

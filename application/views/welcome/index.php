@@ -102,7 +102,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?=base_url('contact')?>">
+				<a href="http://goo.gl/forms/xE9TAyVfv9">
 					<!-- <p class="slide-text-6"><?=$slides[5]->title?></p> -->
 					<img src="<?=base_url($slides[6]->path)?>" alt="">
 				</a>

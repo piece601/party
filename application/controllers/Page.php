@@ -40,6 +40,7 @@ class Page extends MY_Controller {
 			$data['path'] = $this->singleUploading()['path'];
 		}
 		$data['page_id'] = $page_id;
+		$data['position'] = count($this->subpage_model->select_by_pageId($page_id));
 		$this->subpage_model->insert_data($data);
 		$this->load->view('success', [
 			'message' => '新增成功',
@@ -136,12 +137,30 @@ class Page extends MY_Controller {
 		$this->pageimg_model->insert_data($data);
 		$this->load->view('success', [
 			'message' => '新增成功',
-			'redirectUrl' => ''
+			'redirectUrl' => 'page/image/'.$sub_id
 		]);
 	}
 
-	public function edit_img()
+	public function edit_img($img_id = null)
 	{
-		# code...
+		if ( ! $query = $this->pageimg_model->select_data($img_id) ) {
+			$this->load->view('failure',[
+				'message' => '查無此資料'
+			]);
+			return true;
+		}
+		if ( ! $data = $this->input->post()) {
+			$this->load->view('page/edit_img', compact('query'));
+			return true;
+		}
+		$data['img_id'] = $img_id;
+		@unlink($query->path); // 刪除原有檔案
+		$data['path'] = $this->singleUploading()['path'];
+		$this->pageimg_model->update_data($data);
+		$this->load->view('success', [
+			'message' => '更新成功',
+			'redirectUrl' => 'page/image/'.$query->sub_id
+		]);
+		return true;
 	}
 }

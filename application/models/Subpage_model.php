@@ -11,6 +11,7 @@ class Subpage_model extends MY_Model {
 
 	public function select_by_pageId($page_id)
 	{
+		$this->db->order_by('position', 'asc');
 		$query = $this->db->get_where($this->table, ['page_id' => $page_id]);
 		return $query->result();
 	}
